@@ -1,7 +1,14 @@
 import Heading from "../layout/Heading";
+import DashboardMenu from "./DashboardMenu";
 
-function DashBoardPage() {
-  return <Heading title="Dashboard">DashBoardPage</Heading>;
+function DashboardPage({ children }) {
+  return (
+    <>
+      <Heading title="Dashboard"></Heading>
+      <DashboardMenu></DashboardMenu>
+      {children ? children : <p>select a section</p>}
+    </>
+  );
 }
 
-export default DashBoardPage;
+export default DashboardPage;

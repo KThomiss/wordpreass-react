@@ -13,7 +13,7 @@ function Layout() {
 
   return (
     <nav>
-      <ul>
+      <ul className="header-ul">
         <li>
           <NavLink end to="/">
             Home

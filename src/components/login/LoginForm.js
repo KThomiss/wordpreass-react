@@ -6,6 +6,7 @@ import axios from "axios";
 import FormError from "../common/FormError";
 import { BASE_URL, TOKEN_PATH } from "../../constants/api";
 import AuthContext from "../../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const url = BASE_URL + TOKEN_PATH;
 
@@ -17,6 +18,8 @@ const schema = yup.object().shape({
 export default function LoginForm() {
   const [submitting, setSubmitting] = useState(false);
   const [loginError, setLoginError] = useState(null);
+
+  const navigate = useNavigate();
 
   const {
     register,
@@ -38,6 +41,7 @@ export default function LoginForm() {
       const response = await axios.post(url, data);
       console.log("response", response.data);
       setAuth(response.data);
+      navigate("/dashboard");
     } catch (error) {
       console.log("error", error);
       setLoginError(error.toString());
